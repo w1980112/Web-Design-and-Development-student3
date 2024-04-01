@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+ 
+<head>
+  <meta charset="UTF-8">
+  <title>TEAM SECTION</title>
+  <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins",sans-serif;
+    }
+    body{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(blue 0%,lightblue 100%);
+    }
+    .wrapper{
+        background: #fff;
+        width: 580px;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 10px 10px 15px rgba(0,0,0,0.4);
+    }
+    h2{
+        text-align: center;
+    }
+    hr{
+        width: 100px;
+        margin: 10px auto;
+    }
+    .members{
+        display:flex;
+    }
+    .team-mem{
+        margin: 8px;
+    }
+    img{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin: 10px;
+    }
+    h4,p{
+        text-align: center;
+        font-size: 12px;
+        margin: 7px;
+    }
+    img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 10px;
+    transition: transform 0.5s ease; 
+    display: inline-block;
+}
+
+img:hover {
+    animation: pulse 1.5s ease infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+  </style>
+</head>
+  
+<body>
+    <div class="wrapper">
+        <h2>Executive Team</h2>
+        <hr>
+        <div class="members">
+            <div class="team-mem">
+                <img src="profile.jpg">
+                <h4> Mohamed Jama</h4>
+                <p>Student 1</p>
+                <p><i>Splash Screen</i></p>
+                <p><i>Shop</i></p>
+            </div>
+            <div class="team-mem">
+                <img src="Tausif.jpg">
+                <h4> Tausif Islam</h4>
+                <p>Student 2</p>
+                <p><i>Home Page</i></p>
+                <p><i>Feedback</i></p>
+            </div>
+            <div class="team-mem">
+                <img src="ROGGER.jpg">
+                <h4> Rogger Sanchez</h4>
+                <p>Student 3</p>
+                <p><i>User Profile</i></p>
+                <p><i>Team</i></p>
+            </div>
+            <div class="team-mem">
+                <img src="Mohammed aasim.jpg">
+                <h4>Mohammed Aasim Uddin</h4>
+                <p>Studnet 4</p>
+                <p><i>Gallery</i></p>
+                <p><i>Sitemap</i></p>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

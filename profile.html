@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile</title>
+<style>
+  body { font-family: Arial, sans-serif;
+    margin:0;
+    padding:0;
+    background: url(education11.jpg);
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+      
+      }
+  .container { max-width: 600px; margin: auto; }
+  .step { display: none; }
+  .step.active { display: block; }
+  .progress-bar { background: lightgray; padding: 3px; border-radius: 5px; margin-bottom: 20px; }
+  .progress { background: green; height: 20px; border-radius: 5px; width: 0%; color: white; text-align: center; }
+  p{ color: rgb(255, 255, 255);}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="progress-bar">
+    <div class="progress" id="progress">0%</div>
+  </div>
+  <!-- Step 1 -->
+  <div class="step active" id="step1">
+    <h2>Step 1: Personal Details</h2>
+    <p>Name: </p>
+    <input type="text" id="name" placeholder="Enter your name">
+    <p>Surname: </p>
+    <input type="text" id="surname" placeholder="Enter your surname">
+    <p>Age:</p>
+    <input type="number" id="age" placeholder="Enter your age">
+    <p>Gender :</p>
+    <input type="radio" id="genderMale" name="gender" value="Male">
+    <label for="genderMale">Male</label><br>
+    <input type="radio" id="genderFemale" name="gender" value="Female">
+    <label for="genderFemale">Female</label><br>
+    <input type="radio" id="genderOther" name="gender" value="Other">
+    <label for="genderOther">Other</label>
+    <p></p>
+    <button onclick="nextStep(2)">Next</button>
+  </div>
+  <!-- Step 2 -->
+  <div class="step" id="step2">
+    <h2>Step 2: Address</h2>
+    <p>Address:</p>
+    <input type="text" id="address" placeholder="Enter your address">
+    <p>PostCode:</p>
+    <input type="text" id="postCode" placeholder="Enter your postcode">
+    <p>City:</p>
+    <input type="text" id="city" placeholder="Enter your city">
+    <button onclick="nextStep(1)">Back</button>
+    <button onclick="nextStep(3)">Next</button>
+  </div>
+  <!-- Step 3 -->
+  <div class="step" id="step3">
+    <h2>Step 3: skills and Education</h2>
+    <p>skills:</p>
+    <textarea id="skills" placeholder="Enter your skills"></textarea>
+    
+    <p>Education:</p>
+    <select id="education">
+      <option value="">Select your education level</option>
+      <option value="none">None</option>
+      <option value="highSchool">High School</option>
+      <option value="bachelor">Bachelor's Degree</option>
+      <option value="master">Master's Degree</option>
+      <option value="phd">PhD</option>
+    </select>
+    
+    <button onclick="nextStep(2)">Back</button>
+    <button onclick="nextStep(4)">Next</button>
+  </div>
+  <!-- Step 4 -->
+  <div class="step" id="step4">
+    <h2>Step 4: Confirmation</h2>
+    <p>Name: <span id="outputName"></span></p>
+    <p>Surname: <span id= "outputSurname"></span></p>
+    <p>Age: <span id="outputAge"></span></p>
+  
+    <p>Gender: <span id="outputGender"></span></p>
+    <p>Address: <span id="outputAddress"></span></p>
+    <p>PostCode: <span id="outputPostCode"></span></p>
+    <p>City: <span id="outputCity"></span></p>
+    <p>Qualities: <span id="outputSkills"></span></p>
+    <p>Education: <span id="outputEducation"></span></p>
+    <button onclick="nextStep(3)">Back</button>
+    <button onclick="submitProfile()">Submit</button>
+  </div>
+</div>
+
+<script>
+  let currentStep = 1;
+
+  function nextStep(step) {
+  
+    // Update progress
+    const progress = (step - 1) * 33.3; // Assuming 2 steps before final confirmation
+    document.getElementById('progress').style.width = progress + '%';
+    document.getElementById('progress').innerText =Math.round(progress) + '%';
+
+    // Hide current step
+    document.getElementById('step' + currentStep).classList.remove('active');
+
+    // Show next step
+    document.getElementById('step' + step).classList.add('active');
+
+    // Update current step
+    currentStep = step;
+
+    if(step === 4) {
+      document.getElementById('outputName').innerText = document.getElementById('name').value;
+      document.getElementById('outputSurname').innerText = document.getElementById('surname').value;
+      document.getElementById('outputAge').innerText = document.getElementById('age').value;
+      
+      const gender = document.querySelector('input[name="gender"]:checked')?.value;
+      document.getElementById('outputGender').innerText = gender ? gender : 'Not specified';
+      document.getElementById('outputAddress').innerText = document.getElementById('address').value;
+      document.getElementById('outputPostCode').innerText = document.getElementById('postCode').value;
+      document.getElementById('outputCity').innerText = document.getElementById('city').value;
+      document.getElementById('outputSkills').innerText = document.getElementById('skills').value;
+      document.getElementById('outputEducation').innerText = document.getElementById('education').value;
+    }
+  }
+
+  function submitProfile() {
+    // Submit the profile data
+    alert('Profile submitted!');
+  }
+</script>
+</body>
+</html>
